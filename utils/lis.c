@@ -1,0 +1,117 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lis.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 22:09:23 by amagno-r          #+#    #+#             */
+/*   Updated: 2025/05/29 22:53:55 by amagno-r         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "../push_swap.h"
+
+static void initialize_arrays(int *lis, int *parent, int n)
+{
+    int i;
+
+    i = 0;
+    while (i < n)
+    {
+        lis[i] = 1;
+        parent[i] = -1;
+        i++;
+    }
+}
+
+static void update_lis_for_position(int arr[], int *lis, int *parent, int i)
+{
+    int j;
+
+    j = 0;
+    while (j < i)
+    {
+        if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+        {
+            lis[i] = lis[j] + 1;
+            parent[i] = j;
+        }
+        j++;
+    }
+}
+
+static void compute_lis_values(int arr[], int *lis, int *parent, int n)
+{
+    int i;
+
+    i = 1;
+    while (i < n)
+    {
+        update_lis_for_position(arr, lis, parent, i);
+        i++;
+    }
+}
+
+static void find_max_lis(int *lis, int n, int *max_length, int *max_index)
+{
+    int i;
+
+    *max_length = lis[0];
+    *max_index = 0;
+    i = 1;
+    while (i < n)
+    {
+        if (lis[i] > *max_length)
+        {
+            *max_length = lis[i];
+            *max_index = i;
+        }
+        i++;
+    }
+}
+
+static void reconstruct_sequence(int arr[], int *parent, int max_index, int max_length, int *sequence)
+{
+    int i, j;
+
+    i = max_index;
+    j = max_length - 1;
+    while (i != -1)
+    {
+        sequence[j] = arr[i];
+        i = parent[i];
+        j--;
+    }
+}
+
+int lis_with_sequence(int arr[], int n, int **sequence)
+{
+    int *lis, *parent;
+    int max_length, max_index;
+
+    if (n == 0)
+        return (0);
+
+    lis = (int *)malloc(n * sizeof(int));
+    parent = (int *)malloc(n * sizeof(int));
+    if (!lis || !parent)
+        return (0);
+    initialize_arrays(lis, parent, n);
+    compute_lis_values(arr, lis, parent, n);
+    find_max_lis(lis, n, &max_length, &max_index);
+    *sequence = (int *)malloc(max_length * sizeof(int));
+    if (!*sequence)
+    {
+        free(lis);
+        free(parent);
+        return (0);
+    }
+    reconstruct_sequence(arr, parent, max_index, max_length, *sequence);
+    free(lis);
+    free(parent);
+    return (max_length);
+}
+

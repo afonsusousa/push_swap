@@ -24,11 +24,14 @@ UTILS_DIR			=	utils/display.c \
                     	utils/atol.c \
                     	utils/cost.c \
                     	utils/stack_b_utils.c \
-                    	utils/stack_a_utilc.c \
+                    	utils/stack_a_utils.c \
                     	utils/sort_utils.c \
                     	utils/sort.c \
                     	utils/indexes.c \
-                    	utils/targets.c 
+                    	utils/targets.c \
+                    	utils/lis.c \
+                    	utils/sort_search.c \
+                    	utils/final_positions.c 
 
 PUSH_SWAP_DIR		=	push_swap.c 
 

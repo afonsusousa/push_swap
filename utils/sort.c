@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:33:53 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 18:15:20 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/29 23:16:56 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void sort_stacks(t_data *stacks)
     t_stack_node *current;
     if(stacks->size_a > 3)
     {
+        update_final_positions(stacks);
         init_b(stacks);
         sort_three(stacks);
         while (stacks->size_b)
@@ -45,6 +46,4 @@ void sort_stacks(t_data *stacks)
     }
     else if (stacks->size_a == 2)
         ra(stacks, false);
-    //print_stacks(stacks);
-    //ft_printf("\n%s\n", is_sorted(stacks) ? "sorted!" : "not sorted!");
 }

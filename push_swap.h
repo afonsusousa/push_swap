@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:33:36 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 17:53:55 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/29 22:54:32 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ typedef struct s_stack_node
     int     cost;
     bool    reverse;
     bool    cheapest;
+    bool    in_lis;
+    int     finalpos;
+
 
     struct s_stack_node *target;
     struct s_stack_node *next;
@@ -92,3 +95,16 @@ bool    has_duplicates(t_stack_node *a);
 // Utility functions
 long    ft_atol(char *str);
 void    print_stacks(t_data *stacks);
+
+// LIS (Longest Increasing Subsequence) functions
+int     lis_with_sequence(int arr[], int n, int **sequence);
+
+// Search and sort functions
+int     binary_search(int arr[], int low, int high, int x);
+void    quick_sort(int arr[], int low, int high);
+int     partition(int arr[], int low, int high);
+void    array_swap(int* a, int* b);
+
+// Final positions and LIS update functions
+void    update_final_positions(t_data *data);
+int     update_lis(t_data *data);
