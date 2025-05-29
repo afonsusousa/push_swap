@@ -9,7 +9,7 @@ OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -I
+CFLAGS				= -Wall -Werror -Wextra -g -I
 RM					= rm -f
 
 # Source Files
@@ -20,7 +20,15 @@ OPERATIONS_DIR		=	operations/push.c \
 
 UTILS_DIR			=	utils/display.c \
                     	utils/init_stack.c \
-                    	utils/stack_utils.c 
+                    	utils/stack_utils.c \
+                    	utils/atol.c \
+                    	utils/cost.c \
+                    	utils/stack_b_utils.c \
+                    	utils/stack_a_utilc.c \
+                    	utils/sort_utils.c \
+                    	utils/sort.c \
+                    	utils/indexes.c \
+                    	utils/targets.c 
 
 PUSH_SWAP_DIR		=	push_swap.c 
 

@@ -6,34 +6,43 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:29:11 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/25 01:39:36 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:07:11 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
-t_stack_node *append(t_stack_node **stack_head, int val)
+void    init_b(t_data *data)
 {
-    t_stack_node *to_append;
-    t_stack_node    *last;
+    t_stack_node *src;
 
-    if (!stack_head)
-        return (NULL);
-    to_append = malloc(sizeof(t_stack_node));
-    if (!to_append)
-        return (NULL);
-    to_append->val = val;
-    to_append->next = NULL;
-    if(!*stack_head)
+    pb(data, false);
+    pb(data, false);
+    while (data->size_a > 3)
     {
-        (*stack_head) = to_append;
-        to_append->prev = NULL;
+        update(data);
+        src = data->a;
+        while (src && !src->cheapest)
+            src = src->next;
+        send_node_to_b(src, data);
     }
-    else
+}
+bool has_duplicates(t_stack_node *a)
+{
+    t_stack_node *iter;
+
+    while(a)
     {
-        last = get_last(*stack_head);
-        last->next = to_append;
-        last->next->prev = last;
+        iter = a->next;
+        while (iter)
+        {
+            if (iter->val == a->val)
+                return (true);
+            iter = iter->next;
+        }
+        a = a->next;
     }
+    return (false);
 }
