@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:29:11 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 04:24:45 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 04:41:12 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,13 @@ static int optimal_threshold(t_data *stacks)
         return (total * 55) / 100;
 }
 
-static int update_lis(t_data *stacks, int *arr)
+static int update_lis(t_data *stacks)
 {
+    int i;
     int ret;
     int *lis;
-    t_stack_node *a;
-
-    a = stacks->a;
-    ret = lis_with_sequence(arr, stacks->size_a, &lis);
-    while(a)
-    {
-        a->in_lis = binary_search(lis, 0, ret, a->val) != -1;
-        a = a->next;
-    }
-    return (free(lis), ret);
-}
-void    init_b(t_data *stacks)
-{
-    t_stack_node *src;
-    int lis_size;
     int *arr;
-    int threshold;
     t_stack_node *a;
-    int i;
 
     i = 0;
     a = stacks->a;
@@ -85,9 +69,23 @@ void    init_b(t_data *stacks)
         arr[i++] = a->val;
         a = a->next;
     }
-    lis_size = update_lis(stacks, arr);
+    ret = lis_with_sequence(arr, stacks->size_a, &lis);
+    a = stacks->a;
+    while(a)
+    {
+        a->in_lis = binary_search(lis, 0, ret, a->val) != -1;
+        a = a->next;
+    }
+    return (free(lis), free(arr), ret);
+}
+void    init_b(t_data *stacks)
+{
+    t_stack_node *src;
+    int lis_size;
+    int threshold;
+
+    lis_size = update_lis(stacks);
     threshold = optimal_threshold(stacks);
-    free(arr);
     while (stacks->size_a > lis_size)
     {
         src = stacks->a;
