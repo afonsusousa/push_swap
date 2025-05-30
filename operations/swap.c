@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:40:21 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/28 19:21:51 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:26:08 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,24 @@ void    swap(t_stack_node **stack_head)
     (*stack_head)->prev = NULL;
 }
 
-void	sa(t_data *data, bool print)
+void	sa(t_data *stacks, bool print)
 {
-	swap(&data->a);
+	swap(&stacks->a);
 	if (!print)
 		ft_printf("sa\n");
 }
 
-void	sb(t_data *data, bool print)
+void	sb(t_data *stacks, bool print)
 {
-	swap(&data->b);
+	swap(&stacks->b);
 	if (!print)
 		ft_printf("sb\n");
 }
 
-void	ss(t_data *data, bool print)
+void	ss(t_data *stacks, bool print)
 {
-	swap(&data->a);
-	swap(&data->b);
+	swap(&stacks->a);
+	swap(&stacks->b);
 	if (!print)
 		ft_printf("ss\n");
 }

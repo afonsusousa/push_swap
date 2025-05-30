@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:25:16 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/28 19:19:51 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:25:36 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ void    rev_rotate(t_stack_node **stack_head)
     (*stack_head) = last;
 }
 
-void    rra(t_data *data, bool print)
+void    rra(t_data *stacks, bool print)
 {
-    rev_rotate(&data->a);
+    rev_rotate(&stacks->a);
     if (!print)
         ft_printf("rra\n");
 }
 
-void    rrb(t_data *data, bool print)
+void    rrb(t_data *stacks, bool print)
 {
-    rev_rotate(&data->b);
+    rev_rotate(&stacks->b);
     if (!print)
         ft_printf("rrb\n");
 }
 
-void    rrr(t_data *data, bool print)
+void    rrr(t_data *stacks, bool print)
 {
-    rev_rotate(&data->a);
-    rev_rotate(&data->b);
+    rev_rotate(&stacks->a);
+    rev_rotate(&stacks->b);
     if (!print)
         ft_printf("rrr\n");
 }
