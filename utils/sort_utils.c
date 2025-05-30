@@ -6,50 +6,13 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 23:02:54 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 03:06:38 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:12:32 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <limits.h>
 
-t_stack_node    *get_min(t_stack_node *stack_head)
-{
-    long min;
-    t_stack_node *min_node;
-
-    min = LONG_MAX;
-    min_node = NULL;
-    while(stack_head)
-    {
-        if(stack_head->val < min)
-        {
-            min = stack_head->val;
-            min_node = stack_head;
-        }
-        stack_head = stack_head->next;
-    }
-    return (min_node);
-}
-
-t_stack_node    *get_max(t_stack_node *stack_head)
-{
-    long max;
-    t_stack_node *max_node;
-
-    max = LONG_MIN;
-    max_node = NULL;
-    while(stack_head)
-    {
-        if(stack_head->val > max)
-        {
-            max = stack_head->val;
-            max_node = stack_head;
-        }
-        stack_head = stack_head->next;
-    }
-    return (max_node);
-}
 bool    is_sorted(t_data *stacks)
 {
     t_stack_node *a;
@@ -64,6 +27,30 @@ bool    is_sorted(t_data *stacks)
         a = a->next;
     }
     return (true);
+}
+
+void update_final_positions(t_data *stacks)
+{
+    int *arr;
+    t_stack_node *a;
+    int i;
+
+    i = 0;
+    a = stacks->a;
+    arr = malloc(sizeof(int) * stacks->size_a);
+    while (a)
+    {
+        arr[i++] = a->val;
+        a = a->next;
+    }
+    quick_sort(arr, 0, stacks->size_a);
+    a = stacks->a;
+    while(a)
+    {
+        a->finalpos = binary_search(arr, 0, stacks->size_a, a->val);
+        a = a->next;
+    }
+    free(arr);
 }
 
 void    get_min_on_top(t_data * stacks)
