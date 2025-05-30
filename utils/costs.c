@@ -6,14 +6,14 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 16:43:09 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 03:13:33 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:44:44 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <limits.h>
 
-void set_cost(t_stack_node *current, t_data *stacks, int stack)
+static void set_cost(t_stack_node *current, t_data *stacks, int stack)
 {
     int stack_size = (!stack * stacks->size_a) + (stack * stacks->size_b);
     if(!current->reverse)

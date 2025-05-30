@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:33:36 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 02:51:58 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:48:31 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ t_stack_node *append(t_stack_node **stack_head, int val);
 
 // Index and cost functions
 void    update_indexes(t_data *data);
-void    set_cost(t_stack_node *current, t_data *data, int stack);
 void    update_costs(t_data *data);
 void    update_cheapest(t_stack_node *stack_head);
 
@@ -105,4 +104,3 @@ void    array_swap(int* a, int* b);
 
 // Final positions and LIS update functions
 void    update_final_positions(t_data *data);
-int     update_lis(t_data *data);
