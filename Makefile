@@ -18,18 +18,17 @@ OPERATIONS_DIR		=	operations/push.c \
 						operations/rotate.c \
 						operations/swap.c
 
-UTILS_DIR			=	utils/init_stack.c \
+UTILS_DIR			=	utils/init.c \
                     	utils/stack_utils.c \
                     	utils/atol.c \
-                    	utils/cost.c \
+                    	utils/costs.c \
                     	utils/stack_a_utils.c \
                     	utils/sort_utils.c \
                     	utils/sort.c \
                     	utils/indexes.c \
                     	utils/targets.c \
                     	utils/lis.c \
-                    	utils/sort_search.c \
-                    	utils/final_positions.c 
+                    	utils/sort_search.c
 
 PUSH_SWAP_DIR		=	push_swap.c 
 

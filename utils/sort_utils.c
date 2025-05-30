@@ -12,6 +12,7 @@
 
 #include "../push_swap.h"
 #include <limits.h>
+#include <stdlib.h>
 
 bool    is_sorted(t_data *stacks)
 {
