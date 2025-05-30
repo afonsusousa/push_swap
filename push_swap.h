@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:33:36 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 22:54:32 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 02:51:58 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ void    send_node_to_b(t_stack_node *src, t_data *data);
 void    send_node_to_a(t_stack_node *src, t_data *data);
 
 // Sorting functions
-void	sort_three(t_data *data);
 void    sort_stacks(t_data *stacks);
-void    update(t_data *data);
 void    get_min_on_top(t_data * data);
 bool    is_sorted(t_data *data);
 

@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 22:09:23 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 22:53:55 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 02:49:58 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,23 @@ static void initialize_arrays(int *lis, int *parent, int n)
     }
 }
 
-static void update_lis_for_position(int arr[], int *lis, int *parent, int i)
-{
-    int j;
-
-    j = 0;
-    while (j < i)
-    {
-        if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
-        {
-            lis[i] = lis[j] + 1;
-            parent[i] = j;
-        }
-        j++;
-    }
-}
-
 static void compute_lis_values(int arr[], int *lis, int *parent, int n)
 {
     int i;
+    int j;
 
-    i = 1;
-    while (i < n)
+    i = 0;
+    while (++i < n)
     {
-        update_lis_for_position(arr, lis, parent, i);
-        i++;
+        j = -1;
+        while (++j < i)
+        { 
+            if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+            {
+                lis[i] = lis[j] + 1;
+                parent[i] = j;
+            }
+        }
     }
 }
 
@@ -61,15 +53,14 @@ static void find_max_lis(int *lis, int n, int *max_length, int *max_index)
 
     *max_length = lis[0];
     *max_index = 0;
-    i = 1;
-    while (i < n)
+    i = 0;
+    while (++i < n)
     {
         if (lis[i] > *max_length)
         {
             *max_length = lis[i];
             *max_index = i;
         }
-        i++;
     }
 }
 
@@ -78,12 +69,11 @@ static void reconstruct_sequence(int arr[], int *parent, int max_index, int max_
     int i, j;
 
     i = max_index;
-    j = max_length - 1;
+    j = max_length;
     while (i != -1)
     {
-        sequence[j] = arr[i];
+        sequence[--j] = arr[i];
         i = parent[i];
-        j--;
     }
 }
 
@@ -94,7 +84,6 @@ int lis_with_sequence(int arr[], int n, int **sequence)
 
     if (n == 0)
         return (0);
-
     lis = (int *)malloc(n * sizeof(int));
     parent = (int *)malloc(n * sizeof(int));
     if (!lis || !parent)
@@ -104,14 +93,8 @@ int lis_with_sequence(int arr[], int n, int **sequence)
     find_max_lis(lis, n, &max_length, &max_index);
     *sequence = (int *)malloc(max_length * sizeof(int));
     if (!*sequence)
-    {
-        free(lis);
-        free(parent);
-        return (0);
-    }
+        return (free(lis), free(parent), -1);
     reconstruct_sequence(arr, parent, max_index, max_length, *sequence);
-    free(lis);
-    free(parent);
-    return (max_length);
+    return (free(lis), free(parent), max_length);
 }
 

@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 23:02:54 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 18:14:54 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:06:38 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,49 +50,33 @@ t_stack_node    *get_max(t_stack_node *stack_head)
     }
     return (max_node);
 }
-bool    is_sorted(t_data *data)
+bool    is_sorted(t_data *stacks)
 {
     t_stack_node *a;
 
-    a = data->a;
+    a = stacks->a;
     if (!a)
         return (false);
     while(a->next)
     {
         if(a->val > a->next->val)
-        {
-           // ft_printf("failed at %d", a->val);
             return (false);
-        }
         a = a->next;
     }
     return (true);
 }
 
-void    get_min_on_top(t_data * data)
+void    get_min_on_top(t_data * stacks)
 {
     t_stack_node *min;
 
-    min = get_min(data->a);
-    update_indexes(data);
-    while(data->a != min)
+    min = get_min(stacks->a);
+    update_indexes(stacks);
+    while(stacks->a != min)
     {
         if(!min->reverse)
-            ra(data, false);
+            ra(stacks, false);
         else
-            rra(data, false);
+            rra(stacks, false);
     }
 }
-void	sort_three(t_data *data)
-{
-	t_stack_node	*biggest_node; 
-
-	biggest_node = get_max(data->a);
-	if (biggest_node == data->a) 
-		ra(data, false); 
-	else if (data->a->next == biggest_node)
-		rra(data, false);
-	if (data->a->val > data->a->next->val)
-		sa(data, false);
-}
-

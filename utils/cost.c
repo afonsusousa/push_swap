@@ -6,42 +6,39 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 16:43:09 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 17:44:47 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/05/30 03:07:44 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <limits.h>
 
-void set_cost(t_stack_node *current, t_data *data, int stack)
+void set_cost(t_stack_node *current, t_data *stacks, int stack)
 {
-    int stack_size = (!stack * data->size_a) + (stack * data->size_b);
+    int stack_size = (!stack * stacks->size_a) + (stack * stacks->size_b);
     if(!current->reverse)
         current->cost = current->index;
     else
         current->cost = stack_size - current->index;
 }
 
-void update_costs(t_data *data)
+void update_costs(t_data *stacks)
 {
     t_stack_node *a;
     t_stack_node *b;
 
-    a = data->a;
-    b = data->b;
+    a = stacks->a;
+    b = stacks->b;
     while(a)
     {
-        set_cost(a, data, STACK_A);
+        set_cost(a, stacks, STACK_A);
         a = a->next;
     }
     while (b)
     {
-        set_cost(b, data, STACK_B);
+        set_cost(b, stacks, STACK_B);
         b = b->next;
     }
-    update_indexes(data);
-    update_targets(data);
-    
 }
 void   update_cheapest(t_stack_node *stack_head)
 {
