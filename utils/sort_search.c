@@ -6,34 +6,40 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 22:36:22 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 01:53:56 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:26:28 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void array_swap(int* a, int* b) {
-    int t = *a;
+static void array_swap(int* a, int* b) 
+{
+    int t;
+    
+    t = *a;
     *a = *b;
     *b = t;
 }
 
-static int partition(int arr[], int low, int high) {
-    
-    int pivot = arr[high];
-    int i = low - 1;
-    int j = low;
-    
-    while (j <= high - 1) {
-        if (arr[j] < pivot) {
-            i++;
-            array_swap(&arr[i], &arr[j]);
-        }
+static int partition(int arr[], int low, int high) 
+{
+    int pivot;
+    int i; 
+    int j;
+
+    pivot = arr[high];
+    i = low - 1;
+    j = low;
+    while (j <= high - 1) 
+    {
+        if (arr[j] < pivot) 
+            array_swap(&arr[++i], &arr[j]);
         j++;
     }
     array_swap(&arr[i + 1], &arr[high]);  
     return (i + 1);
 }
 
-void quick_sort(int arr[], int low, int high) {
+void quick_sort(int arr[], int low, int high) 
+{
     if (low < high) 
     {
         int pi = partition(arr, low, high);
@@ -44,9 +50,11 @@ void quick_sort(int arr[], int low, int high) {
 
 int binary_search(int arr[], int low, int high, int x)
 {
+    int mid;
+    
     if (high >= low) 
     {
-        int mid = low + (high - low) / 2;
+        mid = low + (high - low) / 2;
         if (arr[mid] == x)
             return mid;
         if (arr[mid] > x)

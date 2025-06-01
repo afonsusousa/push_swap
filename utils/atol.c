@@ -6,9 +6,11 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:41:20 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/25 02:31:33 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:34:52 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../push_swap.h"
 
 long    ft_atol(char *str)
 {
@@ -21,8 +23,12 @@ long    ft_atol(char *str)
         str++;  
     if(*str == '-' || *str == '+')
         sign = (-1 * (*(str++) == '-'));
+    if(*str < '0' || *str > '9')
+        return (ATOL_ERROR);
     while (*str >= '0' && *str <= '9')
         ret = ret * 10 + (*(str++) - '0');
+    if(*str || (sign == 1) * (ret * sign) > INT_MAX || (sign == -1 ) * (ret * sign) < INT_MIN)
+        return (ATOL_ERROR);
     return (ret * sign);
 }
 

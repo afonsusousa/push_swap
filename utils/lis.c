@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 22:09:23 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 02:49:58 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:21:04 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ static void find_max_lis(int *lis, int n, int *max_length, int *max_index)
 
 static void reconstruct_sequence(int arr[], int *parent, int max_index, int max_length, int *sequence)
 {
-    int i, j;
+    int i;
+    int j;
 
     i = max_index;
     j = max_length;

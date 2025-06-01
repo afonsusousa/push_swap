@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:29:11 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 04:41:12 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:56:34 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,25 @@
 
 static int optimal_threshold(t_data *stacks)
 {
-    t_stack_node *a;
-    int non_lis_count = 0;
-    int high_pos_count = 0;
-    int mid_pos_count = 0;
-    int low_pos_count = 0;
+    t_stack_node *a = stacks->a;
+    int high_weight = 0, low_weight = 0, pos = 0;
     int total = stacks->size_a;
     
-    a = stacks->a;
     while (a)
     {
         if (!a->in_lis)
         {
-            non_lis_count++;
+            int weight = total - pos;
             if (a->finalpos >= total * 2 / 3)
-                high_pos_count++;
-            else if (a->finalpos >= total / 3)
-                mid_pos_count++;
-            else
-                low_pos_count++;
+                high_weight += weight;
+            else if (a->finalpos < total / 3)
+                low_weight += weight;
         }
         a = a->next;
+        pos++;
     }
-    if (non_lis_count == 0)
-        return total / 2;
-    if (high_pos_count > mid_pos_count + low_pos_count)
-        return (total * 40) / 100;
-    if (low_pos_count > high_pos_count + mid_pos_count)
-        return (total * 60) / 100;
-    int balance_ratio = (high_pos_count * 100) / non_lis_count;
-    if (balance_ratio > 60)
-        return (total * 42) / 100;
-    else if (balance_ratio > 40)
-        return (total * 45) / 100;
-    else
-        return (total * 55) / 100;
+    int balance = (high_weight - low_weight) * 10 / (high_weight + low_weight + 1);
+    return total * (50 + (balance > 0 ? 5 : -5)) / 100;
 }
 
 static int update_lis(t_data *stacks)

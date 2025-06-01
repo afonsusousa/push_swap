@@ -22,12 +22,13 @@ UTILS_DIR			=	utils/init.c \
                     	utils/stack_utils.c \
                     	utils/atol.c \
                     	utils/costs.c \
-                    	utils/stack_a_utils.c \
+                    	utils/insertions.c \
                     	utils/sort_utils.c \
                     	utils/sort.c \
                     	utils/indexes.c \
                     	utils/targets.c \
                     	utils/lis.c \
+                    	utils/errors.c \
                     	utils/sort_search.c
 
 PUSH_SWAP_DIR		=	push_swap.c 

@@ -6,14 +6,17 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:33:36 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 03:48:31 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:43:42 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "libft/libft.h"
+#include <limits.h>
+
 #define STACK_A 0
 #define STACK_B 1
+#define ATOL_ERROR LONG_MAX
 
 typedef struct s_stack_node
 {
@@ -65,8 +68,7 @@ t_stack_node    *get_max(t_stack_node *stack_head);
 t_stack_node    *find_min(t_stack_node *stack_head);
 t_stack_node    *find_max(t_stack_node *stack_head);
 int size(t_stack_node *stack_head);
-t_stack_node *get(t_stack_node *stack_head, int index);
-t_stack_node *append(t_stack_node **stack_head, int val);
+t_stack_node *append(t_data *stacks, int val);
 
 // Index and cost functions
 void    update_indexes(t_data *data);
@@ -104,3 +106,7 @@ void    array_swap(int* a, int* b);
 
 // Final positions and LIS update functions
 void    update_final_positions(t_data *data);
+
+//Error handling
+void free_data(t_data *stacks);
+void ft_error(t_data *stacks);

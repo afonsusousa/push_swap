@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 01:34:27 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/29 03:48:08 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:44:05 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 {
   
     t_data stacks;
+    long value;
 
     stacks.a = NULL;
     stacks.b = NULL;
@@ -27,15 +28,17 @@ int main(int argc, char **argv)
     i = 1;
     char **nbrs;
     (void) argc;
-
     while (i < argc)
     {
         nbrs = ft_split(argv[i], ' ');
+        if(!nbrs)
+            free_data(&stacks);
         while (*nbrs)
         {
-            append(&stacks.a, ft_atol(*nbrs));
-            stacks.size_a++;
-            nbrs++;
+            value = ft_atol(*nbrs++);
+            if(value == ATOL_ERROR || !append(&stacks, value) 
+                || has_duplicates(stacks.a))
+                ft_error(&stacks);
         }
         i++;
     }

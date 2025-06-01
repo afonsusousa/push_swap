@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:26:16 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 03:12:44 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/01 20:42:41 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,13 @@ t_stack_node *get_last(t_stack_node *stack_head)
     return (stack_head);
 }
 
-t_stack_node *append(t_stack_node **stack_head, int val)
+t_stack_node *append(t_data *stacks, int val)
 {
+    t_stack_node **stack_head;
     t_stack_node *to_append;
     t_stack_node    *last;
 
+    stack_head = &stacks->a;
     if (!stack_head)
         return (NULL);
     to_append = ft_calloc(sizeof(t_stack_node), 1);
@@ -88,5 +90,6 @@ t_stack_node *append(t_stack_node **stack_head, int val)
         last->next = to_append;
         last->next->prev = last;
     }
+    stacks->size_a++;
     return (to_append);
 }
