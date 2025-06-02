@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:29:11 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/02 22:14:23 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/02 22:20:21 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static int	optimal_threshold(t_data *stacks)
 	calculate_weights(stacks->a, total, &high_weight, &low_weight);
 	balance = (high_weight - low_weight) * 10 / (high_weight + low_weight + 1);
 	if (balance > 0)
-		return (total * 55 / 100);
-	else
 		return (total * 45 / 100);
+	else
+		return (total * 55 / 100);
 }
 
 static int	update_lis(t_data *stacks)
