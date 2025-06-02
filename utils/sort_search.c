@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 22:36:22 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/01 20:26:28 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:35:32 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int binary_search(int arr[], int low, int high, int x)
 {
     int mid;
     
-    if (high >= low) 
+    if (high >= low && low >= 0) 
     {
         mid = low + (high - low) / 2;
         if (arr[mid] == x)

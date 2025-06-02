@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 18:29:11 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/01 20:56:34 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:35:27 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ static int update_lis(t_data *stacks)
         a = a->next;
     }
     ret = lis_with_sequence(arr, stacks->size_a, &lis);
+    if(!ret)
+        ft_error(stacks, NULL);
     a = stacks->a;
     while(a)
     {
-        a->in_lis = binary_search(lis, 0, ret, a->val) != -1;
+        a->in_lis = binary_search(lis, 0, ret - 1, a->val) != -1;
         a = a->next;
     }
     return (free(lis), free(arr), ret);

@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:33:36 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/01 20:43:42 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:37:21 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void    array_swap(int* a, int* b);
 void    update_final_positions(t_data *data);
 
 //Error handling
-void free_data(t_data *stacks);
-void ft_error(t_data *stacks);
+void free_nbrs(char ***nbrs);
+void free_data(t_data *stacks, char ***nbrs);
+void ft_error(t_data *stacks, char ***nbrs);

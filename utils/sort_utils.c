@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 23:02:54 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/05/30 03:45:42 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:35:24 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void update_final_positions(t_data *stacks)
         arr[i++] = a->val;
         a = a->next;
     }
-    quick_sort(arr, 0, stacks->size_a);
+    quick_sort(arr, 0, stacks->size_a - 1);
     a = stacks->a;
     while(a)
     {
-        a->finalpos = binary_search(arr, 0, stacks->size_a, a->val);
+        a->finalpos = binary_search(arr, 0, stacks->size_a - 1, a->val);
         a = a->next;
     }
     free(arr);
