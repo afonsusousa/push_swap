@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:46:05 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/03 19:16:15 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/04 20:13:07 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	push(t_stack_node **dest, t_stack_node **src)
 
 void	pa(t_data *stacks, bool print)
 {
+	if (stacks->size_b == 0)
+		return ;
 	push(&stacks->a, &stacks->b);
 	stacks->size_b--;
 	stacks->size_a++;
@@ -45,6 +47,8 @@ void	pa(t_data *stacks, bool print)
 
 void	pb(t_data *stacks, bool print)
 {
+	if (stacks->size_a == 0)
+		return ;
 	push(&stacks->b, &stacks->a);
 	stacks->size_a--;
 	stacks->size_b++;

@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:12:17 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/03 19:16:19 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/04 20:13:09 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	rotate(t_stack_node **stack_head)
 
 void	ra(t_data *stacks, bool print)
 {
+	if (stacks->size_a < 2)
+		return ;
 	rotate(&stacks->a);
 	if (!print)
 		ft_printf("ra\n");
@@ -36,6 +38,8 @@ void	ra(t_data *stacks, bool print)
 
 void	rb(t_data *stacks, bool print)
 {
+	if (stacks->size_b < 2)
+		return ;
 	rotate(&stacks->b);
 	if (!print)
 		ft_printf("rb\n");
@@ -43,8 +47,12 @@ void	rb(t_data *stacks, bool print)
 
 void	rr(t_data *stacks, bool print)
 {
-	rotate(&stacks->a);
-	rotate(&stacks->b);
+	if (stacks->size_a < 2 && stacks->size_b < 2)
+		return ;
+	if (stacks->size_a >= 2)
+		rotate(&stacks->a);
+	if (stacks->size_b >= 2)
+		rotate(&stacks->b);
 	if (!print)
 		ft_printf("rr\n");
 }
