@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 23:02:54 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/02 22:12:23 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/04 20:18:07 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	update_final_positions(t_data *stacks)
 	i = 0;
 	a = stacks->a;
 	arr = malloc(sizeof(int) * stacks->size_a);
+	if (!arr)
+		ft_error(stacks, NULL);
 	while (a)
 	{
 		arr[i++] = a->val;
