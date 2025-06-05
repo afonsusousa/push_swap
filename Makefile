@@ -83,6 +83,21 @@ $(OBJ_DIR)%.o:		%.c
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
+visualizer:
+	@echo "   $(B)$(CYA)Setting up Push Swap Visualizer$(D)"
+	@if [ ! -d "push_swap_visualizer" ]; then \
+		echo "   $(B)$(YEL)Cloning visualizer repository$(D) 💾💾"; \
+		git clone https://github.com/o-reo/push_swap_visualizer.git; \
+	else \
+		echo "   $(B)$(YEL)Visualizer repository already exists$(D)"; \
+	fi
+	@echo "   $(B)$(YEL)Building visualizer 🔨$(D)"
+	@mkdir -p push_swap_visualizer/build
+	@cd push_swap_visualizer/build && cmake .. -DCMAKE_POLICY_VERSION_MINIMUM=3.5 && make
+	@echo "   $(B)$(GRN)Visualizer build complete$(D): $(_SUCCESS)"
+	@echo "   $(B)$(CYA)Running visualizer$(D)"
+	@cd push_swap_visualizer/build && ./bin/visualizer
+
 clean:
 					@$(RM) -r $(OBJ_DIR)
 					@make clean -C ./libft
