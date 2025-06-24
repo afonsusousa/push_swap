@@ -6,7 +6,7 @@
 /*   By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:54:59 by amagno-r          #+#    #+#             */
-/*   Updated: 2025/06/03 20:07:14 by amagno-r         ###   ########.fr       */
+/*   Updated: 2025/06/24 20:53:21 by amagno-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	stacks = new_data();
 	parse_stacks(argc, argv, &stacks);
 	parse_op(&stacks);
-	if (!is_sorted(&stacks))
+	if (!is_sorted(&stacks) && !stacks.b && !stacks.size_b)
 		write(1, "KO\n", 3);
 	else
 		write(1, "OK\n", 3);
