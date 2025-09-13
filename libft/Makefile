@@ -6,7 +6,7 @@
 #    By: amagno-r <amagno-r@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 16:47:35 by amagno-r          #+#    #+#              #
-#    Updated: 2025/05/25 01:56:09 by amagno-r         ###   ########.fr        #
+#    Updated: 2025/09/13 16:43:54 by amagno-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ PRINTF_OBJS = $(PRINTF_SRCS:.c=.o)
 OBJSBONUS = $(BONUS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 RM = rm -f
 
 all: $(NAME)
