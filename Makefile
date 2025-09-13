@@ -51,10 +51,10 @@ CHECKER_SRCS		= $(CHECKER_OPERATIONS) $(CHECKER_UTILS) $(CHECKER_GNL) $(CHECKER_
 PUSH_SWAP_OBJ		= $(PUSH_SWAP_SRCS:.c=.o)
 CHECKER_OBJ			= $(CHECKER_SRCS:.c=.o)
 
+all: 				$(NAME)
+
 $(LIBFT):
 					@make -C ./libft
-
-all: 				$(NAME)
 
 bonus:				$(CHECKER)
 

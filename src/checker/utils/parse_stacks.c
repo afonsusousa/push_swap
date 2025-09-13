@@ -20,6 +20,8 @@ void parse_stacks(int argc, char **argv, t_data *stacks)
     long value;
 
     i = 1;
+	if (argc == 1)
+		ft_error(stacks, &nbrs);
     while (i < argc)
 	{
 		j = 0;
