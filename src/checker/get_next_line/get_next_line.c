@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-#include <unistd.h>
-#include <stdlib.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int	ft_gnl_foundnew(t_gnl_list *lst, int fd)
 {
@@ -53,9 +52,9 @@ void	get_gnl_list(t_gnl_list **dest, int fd)
 
 char	*serve_line(t_gnl_list *lst, int fd)
 {
-	int		linelen;
+	int			linelen;
 	t_gnl_list	*iter;
-	char	*ret;
+	char		*ret;
 
 	linelen = 0;
 	iter = lst;
@@ -75,9 +74,9 @@ char	*serve_line(t_gnl_list *lst, int fd)
 
 void	clean_list(t_gnl_list **lst, int fd)
 {
-	int		i;
-	int		j;
-	char	*buffer;
+	int			i;
+	int			j;
+	char		*buffer;
 	t_gnl_list	*last;
 
 	last = ft_gnl_lstlast(*lst, fd);
@@ -98,7 +97,7 @@ void	clean_list(t_gnl_list **lst, int fd)
 char	*get_next_line(int fd)
 {
 	static t_gnl_list	*line = NULL;
-	char			*ret;
+	char				*ret;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || fd > 1024)
 		return (NULL);

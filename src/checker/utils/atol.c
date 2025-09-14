@@ -27,8 +27,8 @@ long	ft_atol(char *str)
 		return (ATOL_ERROR);
 	while (*str >= '0' && *str <= '9')
 		ret = ret * 10 + (*(str++) - '0');
-	if (*str || (sign == 1) * (ret * sign) > INT_MAX
-		|| (sign == -1) * (ret * sign) < INT_MIN)
+	if (*str || (sign == 1) * (ret * sign) > INT_MAX || (sign == -1) * (ret
+			* sign) < INT_MIN)
 		return (ATOL_ERROR);
 	return (ret * sign);
 }

@@ -57,7 +57,7 @@ void	sort_stacks(t_data *stacks)
 {
 	t_stack_node	*current;
 
-	if(is_sorted(stacks))
+	if (is_sorted(stacks))
 		return ;
 	if (stacks->size_a > 5)
 	{

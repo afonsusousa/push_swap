@@ -12,17 +12,17 @@
 
 #include "../checker.h"
 
-void parse_stacks(int argc, char **argv, t_data *stacks)
+void	parse_stacks(int argc, char **argv, t_data *stacks)
 {
-    char **nbrs;
-    int i;
-    int j;
-    long value;
+	char	**nbrs;
+	int		i;
+	int		j;
+	long	value;
 
-    i = 1;
+	i = 1;
 	if (argc == 1)
 		ft_error(stacks, &nbrs);
-    while (i < argc)
+	while (i < argc)
 	{
 		j = 0;
 		nbrs = ft_split(argv[i++], ' ');

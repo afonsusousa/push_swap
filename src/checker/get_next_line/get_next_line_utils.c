@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 #include <stdlib.h>
 
 char	*ft_strcnpy(t_gnl_list *lst, char *dest, int fd)
